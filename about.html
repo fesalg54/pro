@@ -2,15 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
-  <title>About Us - Drizzlin' Donuts</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Drizzlin' Donuts</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-yellow-50 text-gray-800 transition duration-500">
+<body class="bg-yellow-50 text-black transition duration-500">
 
   <header class="bg-yellow-300 text-purple-600">
     <div class="container mx-auto flex p-5 flex-col md:flex-row items-center">
@@ -20,34 +18,69 @@
       </a>
       <nav class="md:ml-auto flex items-center justify-center">
         <a href="index.html" class="mr-7 hover:text-red-900">HOME</a>
-        
         <a href="about.html" class="hover:text-red-900">ABOUT</a>
       </nav>
     </div>
   </header>
 
-  <section class="text-center py-24 px-5">
-    <h1 class="text-4xl font-bold text-purple-700 mb-4">About Drizzlin' Donuts</h1>
-    <p class="text-lg mb-6">We started our donut journey in a tiny kitchen in 2022.  
-      Since then, we’ve been spreading joy one donut at a time!</p>
-    <p class="mb-8">Our mission is simple: Make your taste buds happy 🍩✨</p>
-    <button onclick="changeTheme()" class="bg-purple-600 text-white px-4 py-2 rounded">Magic Button</button>
+  <section class="container mx-auto py-16 px-4">
+    <h1 class="text-4xl font-bold text-center mb-8" id="aboutTitle">🍩 About Us</h1>
+    <p class="text-lg text-center mb-6">Drizzlin' Donuts was born from a passion for sweets and smiles. We serve handcrafted donuts made with love and a pinch of madness!</p>
+
+    <div class="text-center space-x-4 mb-10">
+      <button onclick="toggleMenu()" class="bg-purple-600 text-white px-4 py-2 rounded">Toggle Menu</button>
+      <button onclick="highlightPrices()" class="bg-yellow-500 text-white px-4 py-2 rounded">Highlight Prices</button>
+      <button onclick="showRandomReview()" class="bg-green-600 text-white px-4 py-2 rounded">Random Review</button>
+    </div>
+
+    <div id="menuSection" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+      <div class="p-4 border rounded">
+        <h3 class="text-xl font-semibold">Chocolate Donut</h3>
+        <p class="price text-gray-700">$5.99</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="text-xl font-semibold">Vanilla Donut</h3>
+        <p class="price text-gray-700">$4.99</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h3 class="text-xl font-semibold">Hazelnut Donut</h3>
+        <p class="price text-gray-700">$5.99</p>
+      </div>
+    </div>
+
+    <div id="randomReview" class="mt-10 text-center text-lg text-purple-700 font-semibold"></div>
   </section>
 
-  <footer class="text-gray-600">
-    <div class="container px-5 py-8 mx-auto flex items-center">
-      <a class="flex items-center text-gray-900">
-        <img src="imgs/logo.png" width="64" height="64">
-        <span class="ml-3 text-xl">Drizzlin' Donuts &copy; 2025</span>
-        <span class="ml-3 text-xl">|glazed with love|</span>
-      </a>
+  <footer class="text-gray-600 bg-yellow-100">
+    <div class="container px-5 py-8 mx-auto flex items-center justify-center">
+      <img src="imgs/logo.png" width="48" height="48" class="mr-3">
+      <span class="text-lg">Drizzlin' Donuts &copy; 2025 | Fresh & Sweet</span>
     </div>
   </footer>
 
   <script>
-    function changeTheme() {
-      document.body.classList.toggle("bg-purple-100");
-      alert("Donut vibes upgraded! 🧁💜");
+    // Function 1: Show/hide menu
+    function toggleMenu() {
+      const menu = document.getElementById("menuSection");
+      menu.classList.toggle("hidden");
+    }
+
+    // Function 2: Highlight prices
+    function highlightPrices() {
+      const prices = document.querySelectorAll(".price");
+      prices.forEach(price => price.classList.toggle("text-red-600"));
+    }
+
+    // Function 3: Show a random review
+    function showRandomReview() {
+      const reviews = [
+        "Best donuts I've ever had! 🍩 - Aditi",
+        "The chocolate one is heavenly. - Ramesh",
+        "Please bring back the Forbidden Donut! - Neha",
+        "Tastes like joy and rainbows. - Arjun"
+      ];
+      const randomIndex = Math.floor(Math.random() * reviews.length);
+      document.getElementById("randomReview").textContent = reviews[randomIndex];
     }
   </script>
 
